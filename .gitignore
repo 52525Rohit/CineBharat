@@ -4,3 +4,5 @@ dist/
 backend/uploads/
 *.log
 .DS_Store
+docs/
+backend/scripts/

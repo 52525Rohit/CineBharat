@@ -1,0 +1,23 @@
+{
+  "name": "streamline-platform",
+  "private": true,
+  "scripts": {
+    "start": "concurrently -n gateway,auth,catalog,engagement,subscription -c blue,green,yellow,magenta,cyan \"npm start --prefix backend/gateway\" \"npm start --prefix backend/services/auth-service\" \"npm start --prefix backend/services/catalog-service\" \"npm start --prefix backend/services/engagement-service\" \"npm start --prefix backend/services/subscription-service\"",
+    "dev": "concurrently -n backend,frontend -c blue,cyan --kill-others \"npm run dev:services\" \"npm run dev:frontend\"",
+    "dev:services": "concurrently -n gateway,auth,catalog,engagement,subscription -c blue,green,yellow,magenta,cyan \"npm run dev --prefix backend/gateway\" \"npm run dev --prefix backend/services/auth-service\" \"npm run dev --prefix backend/services/catalog-service\" \"npm run dev --prefix backend/services/engagement-service\" \"npm run dev --prefix backend/services/subscription-service\"",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "seed": "node backend/scripts/seed.js",
+    "test:backend": "node --test \"backend/shared/**/*.test.js\"",
+    "build:frontend": "npm run build --prefix frontend",
+    "install:all": "npm install && npm install --prefix backend/shared && npm install --prefix backend/gateway && npm install --prefix backend/services/auth-service && npm install --prefix backend/services/catalog-service && npm install --prefix backend/services/engagement-service && npm install --prefix backend/services/subscription-service && npm install --prefix frontend"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.4.2",
+    "mongoose": "^9.9.4",
+    "shared": "file:backend/shared"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  color-scheme: dark;
+}
+
+/* Single source of truth for the navbar height. The hero sections on
+   Home / MovieDetail / ShowDetail pull themselves up by this amount to
+   sit flush under the (transparent) navbar - change it here only. */
+:root {
+  --nav-h: 96px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
